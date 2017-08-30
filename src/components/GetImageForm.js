@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // parent of GetImageButton.js and ImageDisplay.js
-// import GetImageButton from './GetImageButton';
-// import ImageDisplay from './ImageDisplay';
+import GetImageButton from './GetImageButton';
+import ImageDisplay from './ImageDisplay';
 
 //API Key
 const API_KEY = 'wLGELuE2Lbs5nT1o25VTen0p3OAG4HfyvusVVZEp'
@@ -27,6 +27,8 @@ export default class GetImageForm extends Component {
     this.handleRover = this.handleRover.bind(this);
     this.handleCamera = this.handleCamera.bind(this);
     this.handleSol = this.handleSol.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchRoverImage = this.fetchRoverImage.bind(this);
 
   }
 
@@ -54,31 +56,49 @@ export default class GetImageForm extends Component {
     });
   }
 
-  // handles form submission
   handleSubmit(event) {
     event.preventDefault();
+  }
 
+  // handles form submission
+  fetchRoverImage(event) {
+    event.preventDefault();
 
+    let cam = this.state.camera;
+    let rove = this.state.rover;
+    let num = this.state.sol;
+    let imageUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rove}/photos?sol=${num}&camera=${cam}&api_key=${API_KEY}`;
+    // fetch call to retrieve pictures from the NASA Mars Rover API.
+    fetch (imageUrl)
+    .then(r => r.json() )
+    .then((json) => {
+      console.log("Data from fetch", json)
+      this.setState({images: json.photos})
+    })
   }
 
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="rover">Rover</label>
-            <select onChange={this.handleRover} id="rover" value={this.state.rover}>
-              <option value="Curiosity">Curiosity</option>
-              <option value="Opportunity">Opportunity</option>
-              <option value="Spirit">Spirt</option>
-            </select>
-          <label htmlFor="camera">Camera Type</label>
-            <select onChange={this.handleCamera} id="camera" value={this.state.camera}>
-              <option value="fhaz">FHAZ (Front Hazard)</option>
-              <option value="rhaz">RHAZ (Rear Hazard)</option>
-              <option value="navcam">NAVCAM (Navigation Cam)</option>
-            </select>
-          <label htmlFor="sol">Martian Sol: 1000-2000</label>
-          <input type="number" onChange={this.handleSol} max="2000" min="1000" value={this.state.sol}/>
-        </form>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="rover">Rover</label>
+              <select onChange={this.handleRover} id="rover" value={this.state.rover}>
+                <option value="Curiosity">Curiosity</option>
+                <option value="Opportunity">Opportunity</option>
+                <option value="Spirit">Spirt</option>
+              </select>
+            <label htmlFor="camera">Camera Type</label>
+              <select onChange={this.handleCamera} id="camera" value={this.state.camera}>
+                <option value="fhaz">FHAZ (Front Hazard)</option>
+                <option value="rhaz">RHAZ (Rear Hazard)</option>
+                <option value="navcam">NAVCAM (Navigation Cam)</option>
+              </select>
+            <label htmlFor="sol">Martian Sol: 1000-2000</label>
+            <input type="number" onChange={this.handleSol} max="2000" min="1000" value={this.state.sol}/>
+          </form>
+          <GetImageButton action={this.fetchRoverImage} prompt='Fuck Yeah' />
+          <ImageDisplay images={this.state.images} />
+        </div>
       )
     }
 }
