@@ -6,7 +6,7 @@ export default class GetImageButton extends Component {
   }
   render() {
     return (
-      <button onClick={this.props.action}>{this.props.prompt}</button>
+      <button onClick={this.props.action} style={this.props.style}>{this.props.prompt}</button>
     );
   }
 }

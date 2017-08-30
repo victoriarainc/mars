@@ -13,7 +13,7 @@ export default class ImageDisplay extends Component {
     });
 
     return (
-      <section>
+      <section style={this.props.style}>
         {images}
       </section>
     );

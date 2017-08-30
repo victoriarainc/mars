@@ -77,10 +77,35 @@ export default class GetImageForm extends Component {
     })
   }
 
-    render() {
+    render()
+
+      {
+      let divStyle = {
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '5%',
+        borderRadius: '15px'
+      }
+
+      let conStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '5%'
+      }
+
+      let butt = {
+        padding: '2%',
+        width: '15%',
+        fontSize: '20px',
+        backgroundColor: '#00afce',
+        color: 'white',
+        textTransform: 'uppercase'
+      }
+
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
+        <div style={conStyle}>
+          <form onSubmit={this.handleSubmit} style={divStyle} >
             <label htmlFor="rover">Rover</label>
               <select onChange={this.handleRover} id="rover" value={this.state.rover}>
                 <option value="Curiosity">Curiosity</option>
@@ -96,8 +121,8 @@ export default class GetImageForm extends Component {
             <label htmlFor="sol">Martian Sol: 1000-2000</label>
             <input type="number" onChange={this.handleSol} max="2000" min="1000" value={this.state.sol}/>
           </form>
-          <GetImageButton action={this.fetchRoverImage} prompt='Fuck Yeah' />
-          <ImageDisplay images={this.state.images} />
+          <GetImageButton action={this.fetchRoverImage} prompt='Fuck Yeah' style={butt}/>
+          <ImageDisplay images={this.state.images} style={conStyle}/>
         </div>
       )
     }
