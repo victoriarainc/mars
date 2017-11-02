@@ -14,7 +14,8 @@ body {
 }
 
 .intro {
-  padding: 20px 40px;
+  margin-top: 20px;
+  padding: 20px 60px;
   display: flex;
   flex-direction: row;
 }
@@ -28,4 +29,13 @@ body {
 
 .intro_txt {
   width: 90%;
+  line-height: 2;
+}
+
+.intro_quote {
+  padding: 20px 60px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 30px;
+  font-family: cursive;
 }
