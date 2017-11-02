@@ -107,7 +107,19 @@ export default class GetImageForm extends Component {
 
             <div className='select'>
               <label className='select_label' htmlFor="sol">Martian Sol: 1000-2000</label>
-              <input type="number" onChange={this.handleSol} max="2000" min="1000" value={this.state.sol}/>
+              <select onChange={this.handleSol} id="sol" value={this.state.sol}>
+                <option value="1000">1000</option>
+                <option value="1000">1100</option>
+                <option value="1000">1200</option>
+                <option value="1000">1300</option>
+                <option value="1000">1400</option>
+                <option value="1000">1500</option>
+                <option value="1000">1600</option>
+                <option value="1000">1700</option>
+                <option value="1000">1800</option>
+                <option value="1000">1900</option>
+                <option value="1000">2000</option>
+              </select>
             </div>
 
           </form>
