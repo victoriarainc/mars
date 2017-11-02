@@ -49,12 +49,27 @@ body {
   letter-spacing: 1em;
 }
 
+.form_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .form {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  padding: 5%;
+}
+
+.select {
+  margin: 2em;
 }
 
 .select_label {
   margin-right:.5em;
+}
+
+.form_button {
+  align-items: center;
+  width: 3em;
 }

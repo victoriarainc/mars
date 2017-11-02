@@ -80,40 +80,22 @@ export default class GetImageForm extends Component {
     render()
 
       {
-      let divStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        padding: '5%',
-        borderRadius: '15px'
-      }
 
-      let conStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '5%'
-      }
-
-      let butt = {
-        padding: '2%',
-        width: '15%',
-        fontSize: '20px',
-        backgroundColor: '#00afce',
-        color: 'white',
-        textTransform: 'uppercase'
-      }
 
       return (
-        <div className='form_wrapper' style={conStyle}>
-          <form className='form' onSubmit={this.handleSubmit} style={divStyle} >
+        <div className='form_wrapper'>
+
+          <form className='form' onSubmit={this.handleSubmit}>
+
             <div className='select'>
               <label className='select_label' htmlFor="rover">Rover</label>
               <select onChange={this.handleRover} id="rover" value={this.state.rover}>
                 <option value="Curiosity">Curiosity</option>
                 <option value="Opportunity">Opportunity</option>
                 <option value="Spirit">Spirt</option>
-                </select>
+              </select>
             </div>
+
             <div className='select'>
             <label className='select_label' htmlFor="camera">Camera Type</label>
               <select onChange={this.handleCamera} id="camera" value={this.state.camera}>
@@ -122,13 +104,16 @@ export default class GetImageForm extends Component {
                 <option value="navcam">NAVCAM (Navigation Cam)</option>
               </select>
             </div>
+
             <div className='select'>
               <label className='select_label' htmlFor="sol">Martian Sol: 1000-2000</label>
               <input type="number" onChange={this.handleSol} max="2000" min="1000" value={this.state.sol}/>
             </div>
+
           </form>
-          <GetImageButton action={this.fetchRoverImage} prompt='Submit' style={butt}/>
-          <ImageDisplay images={this.state.images} style={conStyle}/>
+
+          <GetImageButton className='form_button' action={this.fetchRoverImage} prompt='Discover'/>
+          <ImageDisplay images={this.state.images}/>
         </div>
       )
     }
