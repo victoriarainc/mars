@@ -10,5 +10,22 @@ body {
   letter-spacing: 1em;
   background-color: grey;
   color: white;
-  padding: 10px 40px;
+  padding: 40px 40px;
+}
+
+.intro {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: row;
+}
+
+.intro_img {
+  height: 100px;
+  width: 10%;
+  box-shadow: 20px;
+  margin: 20px;
+}
+
+.intro_txt {
+  width: 90%;
 }
