@@ -87,5 +87,13 @@ select {
 
 .form_button {
   align-items: center;
-  width: 3em;
+  width: 10em;
+  height: 5em;
+  font: 40px;
+  text-transform: uppercase;
+}
+
+.button_wrapper {
+  display: flex;
+  justify-content: space-around;
 }

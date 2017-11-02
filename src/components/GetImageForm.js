@@ -106,7 +106,7 @@ export default class GetImageForm extends Component {
             </div>
 
             <div className='select'>
-              <label className='select_label' htmlFor="sol">Martian Sol: 1000-2000</label>
+              <label className='select_label' htmlFor="sol">Martian Sol</label>
               <select onChange={this.handleSol} id="sol" value={this.state.sol}>
                 <option value="1000">1000</option>
                 <option value="1000">1100</option>
@@ -124,7 +124,9 @@ export default class GetImageForm extends Component {
 
           </form>
 
-          <GetImageButton className='form_button' action={this.fetchRoverImage} prompt='Discover'/>
+          <div className='button_wrapper'>
+            <GetImageButton className='form_button' action={this.fetchRoverImage} prompt='Discover'/>
+          </div>
           <ImageDisplay images={this.state.images}/>
         </div>
       )
