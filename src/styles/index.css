@@ -91,9 +91,16 @@ select {
   height: 5em;
   font: 40px;
   text-transform: uppercase;
+  margin-bottom: 8em;
 }
 
 .button_wrapper {
   display: flex;
   justify-content: space-around;
+}
+
+/*------------ images*/
+
+.image_results {
+ width: 100%;
 }
